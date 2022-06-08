@@ -1,0 +1,28 @@
+- Pothos + Prisma
+  - About me
+  - Talk overview
+- What is Pothos
+  - Code First GraphQL schema builder
+  - Focus on type-safety, developer experience, and extensibility
+  - Why Pothos
+- Building GraphQL
+  - Both:
+    - A set of types
+    - With a set of fields
+    - Some fields are relations to other types
+    - A set of Queries and Mutations to load or update those types
+  - Initial reaction to just generate/expose your api from your DB
+    - graphqcool?
+    - wundergraph
+    - postgraphile
+  - Why this breaks down
+    - ...
+- Prisma Plugin
+  - Defining types
+  - Defining relations
+  - Defining connections
+  - Prisma Field
+  - Optimization
+    - prisma-select, pal.js
+  - More features
+  - What's coming next?
