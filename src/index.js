@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula';
-import { OrderedList } from 'spectacle';
 
 import {
   FlexBox,
@@ -153,7 +152,7 @@ const Presentation = () => (
             <ListItem>Graphcool</ListItem>
             <ListItem>PostGraphile</ListItem>
             <ListItem>Hasura</ListItem>
-            <ListItem>Mamy more</ListItem>
+            <ListItem>Many more</ListItem>
           </UnorderedList>
         </Appear>
         <Appear>
@@ -166,7 +165,7 @@ const Presentation = () => (
     <Slide backgroundColor="background">
       <FlexBox height="100%" flexDirection="column" justifyContent="start">
         <Heading color="secondary" fontSize="h3">
-          It's not alway the right solution
+          It's not always the right solution
         </Heading>
         <Grid gridTemplateColumns="1fr 1fr" gridColumnGap={30}>
           <UnorderedList fontSize={30}>
@@ -329,14 +328,14 @@ const Presentation = () => (
         </Grid>
       </FlexBox>
       <Notes>
-        <OrderedList>
-          <ListItem>Define type</ListItem>
-          <ListItem>Field builder that understands your data</ListItem>
-          <ListItem>exposing scalars</ListItem>
-          <ListItem>Aliases</ListItem>
-          <ListItem>relations</ListItem>
-          <ListItem>connections</ListItem>
-        </OrderedList>
+        <ol>
+          <li>Define type</li>
+          <li>Field builder that understands your data</li>
+          <li>exposing scalars</li>
+          <li>Aliases</li>
+          <li>relations</li>
+          <li>connections</li>
+        </ol>
       </Notes>
     </Slide>
 
@@ -376,7 +375,7 @@ const Presentation = () => (
     <Slide backgroundColor="background">
       <FlexBox height="100%" flexDirection="column" justifyContent="start">
         <Heading color="secondary" fontSize="h2">
-          Optimized queries
+          Optimized Queries
         </Heading>
         <UnorderedList fontSize={30}>
           <Appear>
@@ -427,7 +426,7 @@ const Presentation = () => (
           <Box>
             <FlexBox flexDirection="column" height="90%">
               <Heading color="primary" fontSize="h3">
-                Duplicate relations
+                Duplicate Relation
               </Heading>
               <CodePane language="graphql" theme={dracula} showLineNumbers={false}>
                 {definingAuthorGql}
@@ -437,7 +436,7 @@ const Presentation = () => (
         </Grid>
       </FlexBox>
       <Notes>
-        Additional optimizations:
+        Additional Optimizations:
         <ol>
           <li>not selected fallback</li>
           <li>selections automatically merged</li>
@@ -450,7 +449,7 @@ const Presentation = () => (
     <Slide backgroundColor="background2">
       <FlexBox flexDirection="column" height="100%" justifyContent="start">
         <Heading color="primary" fontSize="h3">
-          Object level includes
+          Includes for Object Types
         </Heading>
         <CodePane
           language="typescript"
@@ -467,7 +466,7 @@ const Presentation = () => (
     <Slide backgroundColor="background2">
       <FlexBox flexDirection="column" height="100%" justifyContent="start">
         <Heading color="primary" fontSize="h3">
-          Field level selections
+          Selections for Fields
         </Heading>
         <CodePane
           language="typescript"
@@ -485,7 +484,7 @@ const Presentation = () => (
     <Slide backgroundColor="background2">
       <FlexBox flexDirection="column" height="100%" justifyContent="start">
         <Heading color="primary" fontSize="h3">
-          Full select mode
+          Full Select Mode
         </Heading>
         <CodePane
           language="typescript"
@@ -506,7 +505,7 @@ const Presentation = () => (
     <Slide backgroundColor="background">
       <FlexBox height="100%" flexDirection="column" justifyContent="start">
         <Heading color="secondary" fontSize="h3">
-          More features
+          More Features
         </Heading>
         <UnorderedList>
           <Appear>
@@ -516,7 +515,7 @@ const Presentation = () => (
             <ListItem>Variants</ListItem>
           </Appear>
           <Appear>
-            <ListItem>Counts on relations and Connections</ListItem>
+            <ListItem>Counts on relations and connections</ListItem>
           </Appear>
           <Appear>
             <ListItem>Indirect relations</ListItem>
@@ -530,7 +529,7 @@ const Presentation = () => (
     <Slide backgroundColor="background">
       <FlexBox height="100%" flexDirection="column" justifyContent="start">
         <Heading color="secondary" fontSize="h3">
-          What's coming next?
+          What's Coming Next?
         </Heading>
         <UnorderedList>
           <Appear>
