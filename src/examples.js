@@ -10,7 +10,7 @@ builder.queryType${'({'}
       args: {
         name: t.arg.string(),
       },
-      resolve: (parent, { name }) => \`hello, \${name || 'World'}\`,
+      resolve: (_, args) => \`hello, \${args.name || 'World'}\`,
     }),
   }),
 });
@@ -74,10 +74,9 @@ builder.queryType${'({'}
         id: t.arg.id({ required: true }),
       },
       resolve: (query, root, args, context, info) =>
-        db.post.findUnique({
+        prisma.post.findUnique({
           ...query,
           where: { id: args.id },
-          rejectOnNotFound: true,
         }),
     }),
   });

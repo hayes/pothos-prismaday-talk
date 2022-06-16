@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula';
+import oneLight from 'react-syntax-highlighter/dist/cjs/styles/prism/prism';
+
+const codeTheme = window.location.toString().includes('dark') ? dracula : oneLight;
 
 import {
   FlexBox,
@@ -84,6 +87,7 @@ const Presentation = () => (
       </FlexBox>
     </Slide>
 
+    {/*
     <Slide backgroundColor="background">
       <FlexBox height="100%" flexDirection="column" justifyContent="start">
         <Heading color="secondary" fontSize="h2">
@@ -97,7 +101,7 @@ const Presentation = () => (
                   GraphQL
                 </Heading>
               </Appear>
-              <UnorderedList fontSize={30}>
+              <UnorderedList fontSize={40}>
                 <Appear>
                   <ListItem>Types</ListItem>
                 </Appear>
@@ -118,7 +122,7 @@ const Presentation = () => (
               <Heading margin="0px 32px" color="tertiary" fontSize="2.5em">
                 Your database
               </Heading>
-              <UnorderedList fontSize={30}>
+              <UnorderedList fontSize={40}>
                 <Appear>
                   <ListItem>Types</ListItem>
                 </Appear>
@@ -148,7 +152,7 @@ const Presentation = () => (
           <Heading color="tertiary" fontSize="2.5em">
             Tools that solve this problem
           </Heading>
-          <UnorderedList fontSize={30}>
+          <UnorderedList fontSize={40}>
             <ListItem>Graphcool</ListItem>
             <ListItem>PostGraphile</ListItem>
             <ListItem>Hasura</ListItem>
@@ -168,7 +172,7 @@ const Presentation = () => (
           It's not always the right solution
         </Heading>
         <Grid gridTemplateColumns="1fr 1fr" gridColumnGap={30}>
-          <UnorderedList fontSize={30}>
+          <UnorderedList fontSize={40}>
             <Appear>
               <ListItem>Authorization</ListItem>
             </Appear>
@@ -182,7 +186,7 @@ const Presentation = () => (
               <ListItem>Customization</ListItem>
             </Appear>
           </UnorderedList>
-          <UnorderedList fontSize={30}>
+          <UnorderedList fontSize={40}>
             <Appear>
               <ListItem>Public APIs are hard to change</ListItem>
             </Appear>
@@ -196,41 +200,93 @@ const Presentation = () => (
         </Grid>
       </FlexBox>
     </Slide>
+    */}
 
     <Slide backgroundColor="background">
       <FlexBox height="100%" flexDirection="column" justifyContent="start">
         <Heading color="secondary" fontSize="h3">
-          Pothos
+          What is Pothos?
         </Heading>
         <UnorderedList>
           <Appear>
-            <ListItem>Code-First</ListItem>
+            <ListItem>Code-First GraphQL Schema Builder</ListItem>
           </Appear>
           <Appear>
-            <ListItem>Type-Safe</ListItem>
-          </Appear>
-          <Appear>
-            <ListItem>Focused on Developer Experience</ListItem>
+            <ListItem>Type Safety</ListItem>
           </Appear>
           <Appear>
             <ListItem>Plugins!</ListItem>
           </Appear>
+          <Appear>
+            <ListItem>Developer experience</ListItem>
+          </Appear>
         </UnorderedList>
       </FlexBox>
       <Notes>
+        <div>Code-First</div>
         <ul>
-          <li>Schema generated from code rather than DB</li>
-          <li>Types work without code-gen, decorators or meta programing</li>
-          <li>Everything can be co-located</li>
+          <li>Alternative to Nexus/type-graphql</li>
+          <li>Defining your schema with code generates GraphQL sdl</li>
         </ul>
-        Plugins:
+        <div>Type Safety</div>
         <ul>
-          <li>Authorization</li>
-          <li>Validation</li>
-          <li>Dataloaders</li>
-          <li>Prisma</li>
-          <li>Many more</li>
+          <li>Entire API Type safe, types, fields, args, resolvers</li>
+          <li>No code-gen</li>
+          <li>Few manual types</li>
+          <li>Based on typescript inference</li>
+          <li>Type safety hard to show in a talk</li>
         </ul>
+        <div>Plugins:</div>
+        <ul>
+          <li>Authorization, Validation, Dataloaders, Prisma</li>
+          <li>Feel native</li>
+          <li>Co-located</li>
+        </ul>
+        <div>Adds up to Dev experience</div>
+        <ul>
+          <li>Auto complete</li>
+          <li>Rapid iteration, Confidence</li>
+        </ul>
+      </Notes>
+    </Slide>
+
+    <Slide backgroundColor="background">
+      <FlexBox height="100%" flexDirection="column" justifyContent="start">
+        <Heading color="secondary" fontSize="h3">
+          Why Pothos?
+        </Heading>
+        <UnorderedList>
+          <Appear>
+            <ListItem>Built to work at any scale</ListItem>
+          </Appear>
+          <Appear>
+            <ListItem>Flexible and extensible</ListItem>
+          </Appear>
+          <Appear>
+            <ListItem>Works with your data</ListItem>
+          </Appear>
+          <Appear>
+            <ListItem>Easy to integrate with other libraries</ListItem>
+          </Appear>
+        </UnorderedList>
+      </FlexBox>
+      <Notes>
+        <div>
+          <div>Works with data</div>
+          <ul>
+            <li>One of the pit-falls of GraphQL design</li>
+            <li>either matching data or data matching API</li>
+            <li>Data representations</li>
+            <li>Classes, interfaces, plugins, based on schema</li>
+          </ul>
+          <div>Integrates</div>
+          <ul>
+            <li>Yoga</li>
+            <li>Envelop</li>
+            <li>Apollo</li>
+            <li>What ever else</li>
+          </ul>
+        </div>
       </Notes>
     </Slide>
 
@@ -240,7 +296,8 @@ const Presentation = () => (
           <CodePane
             width="1/2"
             language="typescript"
-            theme={dracula}
+            theme={codeTheme}
+            style={{ fontWeight: 'bold' }}
             highlightRanges={[
               [4, 4],
               [6, 6],
@@ -256,8 +313,13 @@ const Presentation = () => (
           </CodePane>
         </Box>
         <Box>
-          <FlexBox flexDirection="column" height="100%">
-            <CodePane language="graphql" theme={dracula} showLineNumbers={false}>
+          <FlexBox flexDirection="column" height="30%" justifyContent="start">
+            <CodePane
+              language="graphql"
+              theme={codeTheme}
+              style={{ fontWeight: 'bold' }}
+              showLineNumbers={false}
+            >
               {helloWorldGql}
             </CodePane>
           </FlexBox>
@@ -271,21 +333,18 @@ const Presentation = () => (
           Prisma Plugin
         </Heading>
         <Box width="1/3">
-          <UnorderedList fontSize={30}>
+          <UnorderedList fontSize={40}>
             <Appear>
-              <ListItem>Make it easy to build with intention</ListItem>
+              <ListItem>Makes it easy to build with intention</ListItem>
             </Appear>
             <Appear>
               <ListItem>Define types, fields, and relations</ListItem>
             </Appear>
             <Appear>
-              <ListItem>Optimize queries for great performance</ListItem>
+              <ListItem>Optimizes queries for great performance</ListItem>
             </Appear>
             <Appear>
-              <ListItem>Easy control over filtering, sorting, and other query arguments</ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>Escape hatches for advanced use cases</ListItem>
+              <ListItem>Building blocks for advanced use cases</ListItem>
             </Appear>
             <Appear>
               <ListItem>Integrates with Pothos ecosystem for everything else</ListItem>
@@ -293,6 +352,22 @@ const Presentation = () => (
           </UnorderedList>
         </Box>
       </FlexBox>
+      <Notes>
+        <div>
+          <div>What does the prisma plugin contribute?</div>
+          <ul>
+            <li>Removed some slides on problems with code gen</li>
+            <li>Using information available in the prisma schema</li>
+            <li>As easy as possible while still explicitly designing</li>
+          </ul>
+          <div>Perf</div>
+          <ul>
+            <li>GraphQL APIs are complex inter connected graphs</li>
+            <li>Queries are unpredictable</li>
+            <li>easy to query efficient than manual</li>
+          </ul>
+        </div>
+      </Notes>
     </Slide>
 
     <Slide backgroundColor="background2">
@@ -304,7 +379,8 @@ const Presentation = () => (
             </Heading>
             <CodePane
               language="typescript"
-              theme={dracula}
+              theme={codeTheme}
+              style={{ fontWeight: 'bold' }}
               highlightRanges={[
                 [1, 1],
                 [2, 2],
@@ -320,7 +396,12 @@ const Presentation = () => (
           </FlexBox>
           <Box>
             <FlexBox flexDirection="column" height="100%">
-              <CodePane language="graphql" theme={dracula} showLineNumbers={false}>
+              <CodePane
+                language="graphql"
+                theme={codeTheme}
+                style={{ fontWeight: 'bold' }}
+                showLineNumbers={false}
+              >
                 {definingTypesGql}
               </CodePane>
             </FlexBox>
@@ -348,15 +429,16 @@ const Presentation = () => (
           <FlexBox flexDirection="column" height="100%">
             <CodePane
               language="typescript"
-              theme={dracula}
+              theme={codeTheme}
+              style={{ fontWeight: 'bold' }}
               highlightRanges={[
                 [3, 4],
                 [5, 7],
                 [8, 8],
                 [9, 9],
-                [11, 12],
+                [11, 11],
                 [10, 10],
-                [1, 15],
+                [1, 14],
               ]}
             >
               {definingPrismaFields}
@@ -364,7 +446,12 @@ const Presentation = () => (
           </FlexBox>
           <Box>
             <FlexBox flexDirection="column" height="100%">
-              <CodePane language="graphql" theme={dracula} showLineNumbers={false}>
+              <CodePane
+                language="graphql"
+                theme={codeTheme}
+                style={{ fontWeight: 'bold' }}
+                showLineNumbers={false}
+              >
                 {definingPrismaFieldsGql}
               </CodePane>
             </FlexBox>
@@ -377,9 +464,9 @@ const Presentation = () => (
         <Heading color="secondary" fontSize="h2">
           Optimized Queries
         </Heading>
-        <UnorderedList fontSize={30}>
+        <UnorderedList fontSize={40}>
           <Appear>
-            <ListItem>Creates a query based on selections</ListItem>
+            <ListItem>Creates a query based on GraphQL selections</ListItem>
           </Appear>
           <Appear>
             <ListItem>Recursively walks selected fields</ListItem>
@@ -405,7 +492,8 @@ const Presentation = () => (
           <FlexBox flexDirection="column" height="95%">
             <CodePane
               language="typescript"
-              theme={dracula}
+              theme={codeTheme}
+              style={{ fontWeight: 'bold' }}
               highlightRanges={[
                 [5, 11],
                 [12, 18],
@@ -415,6 +503,7 @@ const Presentation = () => (
                 [6, 10],
                 [12, 12],
                 [14, 17],
+                [12, 12],
                 [1, 1],
                 [16, 16],
                 [1, 20],
@@ -428,7 +517,12 @@ const Presentation = () => (
               <Heading color="primary" fontSize="h3">
                 Duplicate Relation
               </Heading>
-              <CodePane language="graphql" theme={dracula} showLineNumbers={false}>
+              <CodePane
+                language="graphql"
+                theme={codeTheme}
+                style={{ fontWeight: 'bold' }}
+                showLineNumbers={false}
+              >
                 {definingAuthorGql}
               </CodePane>
             </FlexBox>
@@ -453,7 +547,8 @@ const Presentation = () => (
         </Heading>
         <CodePane
           language="typescript"
-          theme={dracula}
+          theme={codeTheme}
+          style={{ fontWeight: 'bold' }}
           highlightRanges={[
             [2, 4],
             [9, 9],
@@ -470,7 +565,8 @@ const Presentation = () => (
         </Heading>
         <CodePane
           language="typescript"
-          theme={dracula}
+          theme={codeTheme}
+          style={{ fontWeight: 'bold' }}
           highlightRanges={[
             [6, 12],
             [13, 13],
@@ -488,7 +584,8 @@ const Presentation = () => (
         </Heading>
         <CodePane
           language="typescript"
-          theme={dracula}
+          theme={codeTheme}
+          style={{ fontWeight: 'bold' }}
           highlightRanges={[
             [2, 2],
             [4, 4],
@@ -519,9 +616,6 @@ const Presentation = () => (
           </Appear>
           <Appear>
             <ListItem>Indirect relations</ListItem>
-          </Appear>
-          <Appear>
-            <ListItem>Pothos plugins</ListItem>
           </Appear>
         </UnorderedList>
       </FlexBox>
